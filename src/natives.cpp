@@ -12,10 +12,7 @@ The code here acts as the translation between AMX data types and native types.
 using namespace std;
 
 cell Natives::printl(AMX* amx, cell* params) {
-    int
-        len = NULL,
-        ret = NULL;
-
+    int len = NULL, ret = NULL;
     cell* addr = NULL;
 
     amx_GetAddr(amx, params[1], &addr);
