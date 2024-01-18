@@ -16,13 +16,11 @@ The "main" source file with most of the boilerplate code. Includes the
 
 logprintf_t logprintf;
 
-PLUGIN_EXPORT unsigned int PLUGIN_CALL Supports()
-{
+PLUGIN_EXPORT unsigned int PLUGIN_CALL Supports() {
     return SUPPORTS_VERSION | SUPPORTS_AMX_NATIVES;
 }
 
-PLUGIN_EXPORT bool PLUGIN_CALL Load(void** ppData)
-{
+PLUGIN_EXPORT bool PLUGIN_CALL Load(void** ppData) {
     pAMXFunctions = ppData[PLUGIN_DATA_AMX_EXPORTS];
     logprintf = (logprintf_t)ppData[PLUGIN_DATA_LOGPRINTF];
     return true;
@@ -33,17 +31,14 @@ extern "C" const AMX_NATIVE_INFO native_list[] = {
     { NULL, NULL }
 };
 
-PLUGIN_EXPORT int PLUGIN_CALL AmxLoad(AMX* amx)
-{
+PLUGIN_EXPORT int PLUGIN_CALL AmxLoad(AMX* amx) {
     return amx_Register(amx, native_list, -1);
 }
 
-PLUGIN_EXPORT int PLUGIN_CALL Unload()
-{
+PLUGIN_EXPORT int PLUGIN_CALL Unload() {
     return 1;
 }
 
-PLUGIN_EXPORT int PLUGIN_CALL AmxUnload(AMX* amx)
-{
+PLUGIN_EXPORT int PLUGIN_CALL AmxUnload(AMX* amx) {
     return 1;
 }
