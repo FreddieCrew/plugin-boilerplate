@@ -1,11 +1,11 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 
 project(boilerplate)
 
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/lib/cmake-modules")
 
 if(UNIX)
-	set(CMAKE_CXX_FLAGS "-m32 -std=c++11")
+	set(CMAKE_CXX_FLAGS "-m32 -std=c++20")
 	set(CMAKE_C_FLAGS "-m32")
 	set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS OFF)
 endif()
@@ -15,9 +15,10 @@ if(WIN32 AND MVC)
 	set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_SOURCE_DIR}/bin/release")
 endif()
 
-# removes the sprintf warnings from plugin-natives
 add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/bin/plugins)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
